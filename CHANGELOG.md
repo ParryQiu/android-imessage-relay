@@ -4,6 +4,13 @@ All notable changes are documented in this file. The format follows [Keep a Chan
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-08-21
+
+### Changed
+
+- Added an English Android setup-screen screenshot to the README.
+- Adapted the Android setup screen to edge-to-edge system bars on current Android releases.
+
 ## [0.1.0] - 2026-08-21
 
 ### Added
@@ -16,5 +23,6 @@ All notable changes are documented in this file. The format follows [Keep a Chan
 - Cloudflare Tunnel and Zero Trust Access Terraform template.
 - Cross-language protocol tests, CI, CodeQL, dependency review, and secret scanning.
 
-[Unreleased]: https://github.com/ParryQiu/android-imessage-relay/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/ParryQiu/android-imessage-relay/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/ParryQiu/android-imessage-relay/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/ParryQiu/android-imessage-relay/releases/tag/v0.1.0

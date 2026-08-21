@@ -47,7 +47,7 @@ test -f "$apk"
 package_name=$("$apkanalyzer_bin" manifest application-id "$apk")
 version_name=$("$apkanalyzer_bin" manifest version-name "$apk")
 test "$package_name" = 'io.github.parryqiu.androidimessagerelay'
-test "$version_name" = '0.1.0'
+test "$version_name" = '0.1.1'
 
 scan_dir=$(mktemp -d)
 strings_file=$(mktemp)
