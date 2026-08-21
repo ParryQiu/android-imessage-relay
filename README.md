@@ -14,14 +14,6 @@ The project does not use Bark, IFTTT, Workers, D1, KV, R2, or a project-operated
 
 This project is not affiliated with or endorsed by Apple Inc. or Cloudflare, Inc.
 
-## Android app
-
-<p align="center">
-  <img src="docs/assets/android-app.png" alt="Android iMessage Relay setup screen" width="360">
-</p>
-
-The setup screen shown above is an unconfigured Android Emulator instance. It contains no production endpoint, Cloudflare Access credentials, pairing data, or SMS content.
-
 ## Documentation
 
 | Guide | Scope |
@@ -153,6 +145,14 @@ shasum -a 256 -c android-imessage-relay-v0.1.1.apk.sha256
 apksigner verify --print-certs android-imessage-relay-v0.1.1.apk
 adb install android-imessage-relay-v0.1.1.apk
 ```
+
+### Setup screen
+
+<p align="center">
+  <img src="docs/assets/android-app.png" alt="Android iMessage Relay setup screen" width="360">
+</p>
+
+The setup screen shown above is an unconfigured Android Emulator instance. It contains no production endpoint, Cloudflare Access credentials, pairing data, or SMS content.
 
 The expected package name is `io.github.parryqiu.androidimessagerelay`. Release signing is performed locally; no signing private key is stored in this repository or GitHub Actions.
 
