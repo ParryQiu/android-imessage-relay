@@ -45,7 +45,7 @@ expect_failure env IDENTITY_STRINGS_FILE="$test_dir/empty-strings" "$repo_scan" 
 printf '%s\n' '#!/bin/sh' 'exit 0' > "$test_dir/bin/apksigner"
 printf '%s\n' '#!/bin/sh' 'case "$2" in' \
     'application-id) printf "%s\n" io.github.parryqiu.androidimessagerelay ;;' \
-    'version-name) printf "%s\n" 0.1.0 ;;' \
+    'version-name) printf "%s\n" 0.1.1 ;;' \
     '*) exit 2 ;;' \
     'esac' > "$test_dir/bin/apkanalyzer"
 chmod 700 "$test_dir/bin/apksigner" "$test_dir/bin/apkanalyzer"

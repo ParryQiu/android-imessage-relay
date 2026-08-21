@@ -26,7 +26,7 @@ The built-in identity scan detects generic phone-number, user-path, private-netw
 IDENTITY_STRINGS_FILE=/secure/path/release-identity-strings \
   ./scripts/check_identity_leaks.sh .
 IDENTITY_STRINGS_FILE=/secure/path/release-identity-strings \
-  ./scripts/inspect_apk.sh /secure/path/android-imessage-relay-v0.1.0.apk
+  ./scripts/inspect_apk.sh /secure/path/android-imessage-relay-v0.1.1.apk
 ```
 
 ## Local signing
@@ -53,22 +53,22 @@ Use `zipalign` and `apksigner`. Supply passwords through protected files, an int
 
 ```shell
 zipalign -f -p 4 app/build/outputs/apk/release/app-release-unsigned.apk \
-  android-imessage-relay-v0.1.0.apk
+  android-imessage-relay-v0.1.1.apk
 apksigner sign \
   --ks /secure/path/android-imessage-relay-release.jks \
   --ks-key-alias android-imessage-relay \
-  android-imessage-relay-v0.1.0.apk
-apksigner verify --verbose --print-certs android-imessage-relay-v0.1.0.apk
+  android-imessage-relay-v0.1.1.apk
+apksigner verify --verbose --print-certs android-imessage-relay-v0.1.1.apk
 ```
 
 ## Artifact verification
 
 ```shell
-shasum -a 256 android-imessage-relay-v0.1.0.apk \
-  > android-imessage-relay-v0.1.0.apk.sha256
-apksigner verify --print-certs android-imessage-relay-v0.1.0.apk \
-  > android-imessage-relay-v0.1.0-certificate.txt
-syft dir:. -o spdx-json=android-imessage-relay-v0.1.0.spdx.json
+shasum -a 256 android-imessage-relay-v0.1.1.apk \
+  > android-imessage-relay-v0.1.1.apk.sha256
+apksigner verify --print-certs android-imessage-relay-v0.1.1.apk \
+  > android-imessage-relay-v0.1.1-certificate.txt
+syft dir:. -o spdx-json=android-imessage-relay-v0.1.1.spdx.json
 ```
 
 Inspect the APK with `apkanalyzer`, `aapt2`, `jadx`, string scans, and `zipinfo`. The package must be `io.github.parryqiu.androidimessagerelay`, the version must match the tag, and no prohibited value may be present.
@@ -76,7 +76,7 @@ Inspect the APK with `apkanalyzer`, `aapt2`, `jadx`, string scans, and `zipinfo`
 ## Publish
 
 1. Confirm required checks are green on the exact commit.
-2. Create the signed tag `v0.1.0` locally and push it.
+2. Create the signed tag `v0.1.1` locally and push it.
 3. Create a GitHub Release with installation, upgrade, rollback, and known-limitations notes.
 4. Upload only the signed APK, SHA-256 file, SPDX JSON SBOM, and certificate fingerprint file.
 5. Download every artifact from the Release and re-verify its checksum, APK signature, package, version, and certificate fingerprint.

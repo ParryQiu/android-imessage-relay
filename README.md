@@ -149,9 +149,9 @@ Do not expose the Unix socket through a public listener. If migration requires a
 Download the APK, checksum, and certificate fingerprint from the same GitHub Release. Verify all three before installation:
 
 ```shell
-shasum -a 256 -c android-imessage-relay-v0.1.0.apk.sha256
-apksigner verify --print-certs android-imessage-relay-v0.1.0.apk
-adb install android-imessage-relay-v0.1.0.apk
+shasum -a 256 -c android-imessage-relay-v0.1.1.apk.sha256
+apksigner verify --print-certs android-imessage-relay-v0.1.1.apk
+adb install android-imessage-relay-v0.1.1.apk
 ```
 
 The expected package name is `io.github.parryqiu.androidimessagerelay`. Release signing is performed locally; no signing private key is stored in this repository or GitHub Actions.
