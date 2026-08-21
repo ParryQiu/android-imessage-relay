@@ -14,6 +14,14 @@ The project does not use Bark, IFTTT, Workers, D1, KV, R2, or a project-operated
 
 This project is not affiliated with or endorsed by Apple Inc. or Cloudflare, Inc.
 
+## Android app
+
+<p align="center">
+  <img src="docs/assets/android-app.png" alt="Android iMessage Relay setup screen" width="360">
+</p>
+
+The setup screen shown above is an unconfigured Android Emulator instance. It contains no production endpoint, Cloudflare Access credentials, pairing data, or SMS content.
+
 ## Documentation
 
 | Guide | Scope |
