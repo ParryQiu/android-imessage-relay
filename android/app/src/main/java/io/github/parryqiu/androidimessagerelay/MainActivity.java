@@ -4,10 +4,13 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.AppOpsManager;
 import android.content.pm.PackageManager;
-import android.os.Bundle;
+import android.graphics.Insets;
+import android.graphics.Typeface;
 import android.os.Build;
+import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
+import android.view.WindowInsets;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,10 +35,17 @@ public final class MainActivity extends Activity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
         LinearLayout layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
-        int padding = Math.round(24 * getResources().getDisplayMetrics().density);
+        int padding = dp(24);
         layout.setPadding(padding, padding, padding, padding);
 
+        TextView title = new TextView(this);
+        title.setText(R.string.app_name);
+        title.setTextSize(24);
+        title.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+        layout.addView(title);
+
         status = new TextView(this);
+        status.setPadding(0, dp(12), 0, dp(12));
         layout.addView(status);
         endpoint = field(R.id.relay_endpoint, R.string.hint_relay_endpoint, false);
         accessClientId = field(R.id.access_client_id, R.string.hint_access_client_id, false);
@@ -53,8 +63,31 @@ public final class MainActivity extends Activity {
         layout.addView(button(R.id.send_test_message, R.string.button_test, view -> enqueueTest()));
         ScrollView scrollView = new ScrollView(this);
         scrollView.addView(layout);
+        applySystemBarInsets(scrollView, layout, padding);
         setContentView(scrollView);
         updateStatus();
+    }
+
+    @SuppressWarnings("deprecation")
+    private void applySystemBarInsets(View root, View content, int padding) {
+        root.setOnApplyWindowInsetsListener((view, windowInsets) -> {
+            int topInset;
+            int bottomInset;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                Insets systemBars = windowInsets.getInsets(WindowInsets.Type.systemBars());
+                topInset = systemBars.top;
+                bottomInset = systemBars.bottom;
+            } else {
+                topInset = windowInsets.getSystemWindowInsetTop();
+                bottomInset = windowInsets.getSystemWindowInsetBottom();
+            }
+            content.setPadding(padding, padding + topInset, padding, padding + bottomInset);
+            return windowInsets;
+        });
+    }
+
+    private int dp(int value) {
+        return Math.round(value * getResources().getDisplayMetrics().density);
     }
 
     @Override
