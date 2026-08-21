@@ -11,7 +11,7 @@ license = "MIT"
 authors = [{ name = "Parry Qiu" }]
 dependencies = [
     "cryptography==50.0.0",
-    "gunicorn==26.0.0",
+    "gunicorn==26.1.0",
 ]
 
 [project.optional-dependencies]
