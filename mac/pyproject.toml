@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools==84.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "android-imessage-relay"
+version = "0.1.0"
+description = "A private Android SMS to Apple Messages relay"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "Parry Qiu" }]
+dependencies = [
+    "cryptography==50.0.0",
+    "gunicorn==26.0.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest==9.1.1"]
+
+[project.scripts]
+android-imessage-relay = "android_imessage_relay.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

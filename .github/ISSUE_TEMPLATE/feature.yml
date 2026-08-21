@@ -1,0 +1,60 @@
+name: Feature request
+description: Propose a focused improvement.
+title: "[Feature]: "
+labels: ["enhancement", "triage"]
+body:
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - Android client
+        - Mac relay
+        - Cloudflare configuration
+        - Public API
+        - Documentation or community
+        - Cross-component change
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Describe the user problem without credentials or personal data.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: security
+    attributes:
+      label: Security and privacy impact
+      description: Explain permissions, network destinations, data retention, and trust-boundary effects.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: true
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Compatibility and operations
+      description: Describe migration, rollback, Android or macOS compatibility, and infrastructure impact.
+    validations:
+      required: true
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope confirmation
+      options:
+        - label: This request does not include credentials, personal data, SMS content, or deployment identifiers.
+          required: true
+        - label: I reviewed the architecture, limitations, and existing issues before proposing this change.
+          required: true

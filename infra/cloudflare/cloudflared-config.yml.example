@@ -1,0 +1,13 @@
+tunnel: replace-with-existing-tunnel-id
+credentials-file: /path/to/cloudflared-credentials.json
+
+ingress:
+  - hostname: relay.example.com
+    service: unix:/path/to/relay.sock
+    originRequest:
+      access:
+        required: true
+        teamName: replace-with-zero-trust-team-name
+        audTag:
+          - replace-with-access-application-audience-tag
+  - service: http_status:404

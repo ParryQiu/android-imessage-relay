@@ -1,0 +1,5 @@
+account_id             = "replace-with-cloudflare-account-id"
+zone_id                = "replace-with-cloudflare-zone-id"
+tunnel_id              = "replace-with-existing-tunnel-id"
+hostname               = "relay.example.com"
+service_token_duration = "8760h"

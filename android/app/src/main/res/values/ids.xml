@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="relay_endpoint" type="id" />
+    <item name="access_client_id" type="id" />
+    <item name="access_client_secret" type="id" />
+    <item name="save_access_credentials" type="id" />
+    <item name="create_pairing_request" type="id" />
+    <item name="check_pairing_status" type="id" />
+    <item name="send_test_message" type="id" />
+</resources>

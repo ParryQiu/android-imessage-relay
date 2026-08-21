@@ -1,0 +1,82 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  android:
+    name: Android
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: gradle/actions/wrapper-validation@ed408507eac070d1f99cc633dbcf757c94c7933a # v4.4.3
+      - uses: gradle/actions/setup-gradle@ed408507eac070d1f99cc633dbcf757c94c7933a # v4.4.3
+      - name: Test, lint, and build
+        working-directory: android
+        run: ./gradlew --no-daemon test lint assembleDebug assembleAndroidTest
+
+  mac:
+    name: Mac relay
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: mac/dev-requirements.lock
+      - name: Install locked dependencies
+        working-directory: mac
+        run: |
+          python -m pip install --require-hashes -r dev-requirements.lock
+          python -m pip install --no-deps -e .
+      - name: Run tests
+        working-directory: mac
+        run: pytest
+      - name: Compile macOS adapters
+        working-directory: mac
+        run: |
+          xcrun swiftc assets/RecipientKeychain.swift -o "$RUNNER_TEMP/recipient-keychain"
+          osacompile -o "$RUNNER_TEMP/send-message.scpt" assets/send_message.applescript
+
+  terraform:
+    name: Terraform
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: hashicorp/setup-terraform@dfe3c3f87815947d99a8997f908cb6525fc44e9e # v4.0.1
+        with:
+          terraform_version: 1.15.8
+      - name: Check formatting
+        run: terraform -chdir=infra/cloudflare fmt -check
+      - name: Initialize without backend
+        run: terraform -chdir=infra/cloudflare init -backend=false -input=false
+      - name: Validate
+        run: terraform -chdir=infra/cloudflare validate
+
+  secret-scan:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - name: Test identity scanners
+        run: ./scripts/test_identity_scans.sh
+      - name: Scan repository identities
+        run: ./scripts/check_identity_leaks.sh .
+      - uses: gitleaks/gitleaks-action@dcedce43c6f43de0b836d1fe38946645c9c638dc # v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Android iMessage Relay</string>
+    <string name="status_not_paired">Not paired</string>
+    <string name="status_permission_needed">SMS and notification permissions are required</string>
+    <string name="status_access_needed">Configure the relay endpoint and Cloudflare Access credentials</string>
+    <string name="status_ready">SMS relay is ready</string>
+    <string name="status_ready_with_drops">SMS relay is ready. Messages discarded by queue limits: %1$d</string>
+    <string name="status_pairing">Creating a pairing request…</string>
+    <string name="status_pair_pending">Approve pairing on the Mac, then check the status</string>
+    <string name="status_pair_pending_with_code">Approve pairing on the Mac. Verification code: %1$s</string>
+    <string name="status_paired">Pairing approved</string>
+    <string name="status_pair_failed">Pairing failed or expired</string>
+    <string name="status_test_queued">Test message queued</string>
+    <string name="status_test_failed">Unable to queue the test message</string>
+    <string name="status_access_saved">Configuration encrypted and saved</string>
+    <string name="status_access_save_failed">Unable to save configuration</string>
+    <string name="hint_relay_endpoint">https://relay.example.com</string>
+    <string name="hint_access_client_id">Cloudflare Access Client ID</string>
+    <string name="hint_access_client_secret">Cloudflare Access Client Secret</string>
+    <string name="button_save_access">Save encrypted configuration</string>
+    <string name="button_permission">Grant SMS permission</string>
+    <string name="button_pair">Create pairing request</string>
+    <string name="button_check_pairing">Check pairing status</string>
+    <string name="button_test">Send test message</string>
+</resources>

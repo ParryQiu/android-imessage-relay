@@ -1,0 +1,79 @@
+name: Bug report
+description: Report a reproducible defect using sanitized data.
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: Do not include SMS content, phone numbers, credentials, keys, state, live hostnames, or local paths. Report vulnerabilities privately.
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      placeholder: v0.1.0
+    validations:
+      required: true
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - Android
+        - Mac relay
+        - Cloudflare configuration
+        - Documentation
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Include sanitized Android, macOS, Python, cloudflared, and project versions that apply.
+      placeholder: Android 14; macOS 15.6; Python 3.12; cloudflared 2026.x; commit or release
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Observed behavior
+      description: Use synthetic, sanitized examples only.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Sanitized diagnostics
+      description: Include the smallest relevant log excerpt, queue counters, or HTTP status. Replace sensitive values with descriptive placeholders.
+      render: text
+  - type: dropdown
+    id: regression
+    attributes:
+      label: Regression
+      description: Did the same environment work with an earlier version?
+      options:
+        - Unknown
+        - No, this is the first tested version
+        - Yes, an earlier version worked
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety check
+      options:
+        - label: I removed credentials, personal identifiers, message content, deployment identifiers, and private paths.
+          required: true
+        - label: I searched existing issues and troubleshooting documentation before filing this report.
+          required: true

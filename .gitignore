@@ -1,0 +1,59 @@
+# Android and Gradle
+.gradle/
+**/build/
+*.apk
+*.aab
+*.apks
+dist/
+local.properties
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfvars
+*.tfvars.json
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Secrets and deployment state
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.key
+*.crt
+*.cer
+*.csr
+*.mobileprovision
+cloudflared-credentials.json
+credentials.json
+cloudflared-config.yml
+pairing-*.json
+recipient.txt
+*.sqlite3
+*.sqlite3-shm
+*.sqlite3-wal
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/
+*.iml
+*.swp
+*~
