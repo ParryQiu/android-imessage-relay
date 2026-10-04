@@ -4,6 +4,14 @@ All notable changes are documented in this file. The format follows [Keep a Chan
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-10-04
+
+### Changed
+
+- Updated Android build dependencies, the Gradle wrapper, and CI actions.
+- Updated the Cloudflare Terraform provider and dependency lockfile.
+- Aligned Android and Mac package versions at 0.1.2.
+
 ## [0.1.1] - 2026-08-21
 
 ### Changed
@@ -23,6 +31,7 @@ All notable changes are documented in this file. The format follows [Keep a Chan
 - Cloudflare Tunnel and Zero Trust Access Terraform template.
 - Cross-language protocol tests, CI, CodeQL, dependency review, and secret scanning.
 
-[Unreleased]: https://github.com/ParryQiu/android-imessage-relay/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/ParryQiu/android-imessage-relay/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/ParryQiu/android-imessage-relay/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/ParryQiu/android-imessage-relay/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/ParryQiu/android-imessage-relay/releases/tag/v0.1.0
